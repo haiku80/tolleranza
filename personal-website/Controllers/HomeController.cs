@@ -10,7 +10,7 @@ namespace personal_website.Controllers
   {
     public ActionResult Index()
     {
-      ViewBag.Message = "Welcome to ASP.NET MVC!";
+      ViewBag.Message = "This is just a test";
 
       return View();
     }
