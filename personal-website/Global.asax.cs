@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Raven.Client.Document;
+using System.Reflection;
+using Raven.Client.Indexes;
 
 namespace personal_website
 {
@@ -12,6 +15,8 @@ namespace personal_website
 
   public class MvcApplication : System.Web.HttpApplication
   {
+    public static DocumentStore Store;
+
     public static void RegisterGlobalFilters(GlobalFilterCollection filters)
     {
       filters.Add(new HandleErrorAttribute());
@@ -35,6 +40,11 @@ namespace personal_website
 
       RegisterGlobalFilters(GlobalFilters.Filters);
       RegisterRoutes(RouteTable.Routes);
+
+      Store = new DocumentStore { ConnectionStringName = "RavenDB" };
+      Store.Initialize();
+
+      IndexCreation.CreateIndexes(Assembly.GetCallingAssembly(), Store);
     }
   }
 }
