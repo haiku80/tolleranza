@@ -14,10 +14,5 @@ namespace personal_website.Controllers
 
       return View();
     }
-
-    public ActionResult About()
-    {
-      return View();
-    }
   }
 }
