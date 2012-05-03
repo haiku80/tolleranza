@@ -1,0 +1,29 @@
+﻿@model News
+         
+@{
+  ViewBag.Title = "Cancella";
+}
+
+<h2>Cancella</h2>
+
+<h3>Sei sicuro di voler cancellare questo elemento?</h3>
+
+<fieldset>
+  <legend>News</legend>
+  <div class="display-label">Title</div>
+  <div class="display-field">
+    @Html.DisplayFor(model => model.Title)
+  </div>
+  <div class="display-label">Body</div>
+  <div class="display-field">
+    @Html.DisplayFor(model => model.Body)
+  </div>
+</fieldset>
+
+@using (Html.BeginForm()) {
+  <p>
+    <input type="submit" value="Delete" />
+    |
+    @Html.ActionLink("Back to List", "Index")
+  </p>
+}
